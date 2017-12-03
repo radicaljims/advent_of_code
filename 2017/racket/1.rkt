@@ -21,12 +21,12 @@
 
 (define (solution xs) (apply + (wrap-around xs)))
 
+(require rackunit)
+
 (define t1 "1122")
 (define t2 "1111")
 (define t3 "1234")
 (define t4 "9121212129")
-
-(require rackunit)
 
 (check-equal? (solution (listify t1)) 3)
 (check-equal? (solution (listify t2)) 4)
