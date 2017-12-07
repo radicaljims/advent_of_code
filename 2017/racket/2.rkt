@@ -48,13 +48,6 @@
 
 ;; Day 2, goal 2
 
-;; TBD
-
-;; Possible lazy solution: generate all pairs, filter by non-zero division
-;; (define (symmetric_divide xs)
-;;   (match xs
-;;     (['(x y) ()])))
-
 (define t1 "5 9 2 8
 9 4 7 3
 3 8 6 5")
