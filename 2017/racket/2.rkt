@@ -49,3 +49,38 @@
 ;; Day 2, goal 2
 
 ;; TBD
+
+;; Possible lazy solution: generate all pairs, filter by non-zero division
+;; (define (symmetric_divide xs)
+;;   (match xs
+;;     (['(x y) ()])))
+
+(define t1 "5 9 2 8
+9 4 7 3
+3 8 6 5")
+
+(define (common-multiples? xs)
+  (match xs
+    [(list x y) (equal? (max x y) (lcm x y))]
+    [_ #f]))
+
+(define (filter-divisors xs)
+  (flatten (filter common-multiples? (combinations xs 2))))
+
+(check-equal? (map filter-divisors (matrify t1)) '((2 8) (9 3) (3 6)))
+
+(define (symmetric-divide xs)
+  (match xs
+    [(list x y) (/ (max x y) (min x y))]
+    [_ 0]))
+
+(define (divide xs)
+  (map symmetric-divide (map filter-divisors xs)))
+
+(check-equal? (divide (matrify t1)) '(4 3 2))
+
+(define (goal-two xs)
+  (let ([sum ((curry apply) +)])
+    (sum (divide (matrify xs)))))
+
+(check-equal? (goal-two actual) 333)
