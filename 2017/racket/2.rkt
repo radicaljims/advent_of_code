@@ -67,13 +67,13 @@
     [(list x y) (/ (max x y) (min x y))]
     [_ 0]))
 
-(define (divide xs)
+(define (divide-common-factors xs)
   (map symmetric-divide (map filter-divisors xs)))
 
-(check-equal? (divide (matrify t1)) '(4 3 2))
+(check-equal? (divide-common-factors (matrify t1)) '(4 3 2))
 
 (define (goal-two xs)
   (let ([sum ((curry apply) +)])
-    (sum (divide (matrify xs)))))
+    (sum (divide-common-factors (matrify xs)))))
 
 (check-equal? (goal-two actual) 333)
